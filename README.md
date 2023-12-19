@@ -7,10 +7,10 @@ This project is a React application built with Vite, aiming to display popular m
 ## Getting Started
 
 1. Clone the repository:
-   git clone TODO
+   git clone git@github.com:sioanaseres/movie-react-app.git
 
 2. Navigate to the project directory:
-   cd TODO
+   cd movie-react-app
 
 3. Install dependencies:
    npm install
