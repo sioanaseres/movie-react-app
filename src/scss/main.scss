@@ -25,6 +25,12 @@ body {
   .align-center {
     text-align: center;
   }
+
+  .favorites {
+    min-height: 55vh;
+    margin-top: 3rem;
+  }
+
   .inner-nav {
     @include flex-center;
     gap: 5%;
@@ -47,5 +53,12 @@ body {
     .active:hover {
       color: rgba($link-color, $alpha: 0.8);
     }
+  }
+
+  .page-not-found {
+    min-height: 55vh;
+    margin-top: 3rem;
+    @include flex-start;
+    flex-direction: column;
   }
 }
