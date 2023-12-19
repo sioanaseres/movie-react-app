@@ -1,0 +1,78 @@
+@import "../../scss/variables.scss";
+
+.movie-item {
+  border-radius: 3px;
+  overflow: hidden;
+  @include flex-around;
+  flex-direction: column;
+  width: 32vw;
+  height: auto;
+  max-width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+  background: white;
+
+  @media (min-width: $sm) {
+    width: 10rem;
+  }
+  @media (min-width: $lg) {
+    width: 12rem;
+  }
+  @media (min-width: $xl) {
+    width: 14rem;
+  }
+  img {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 2 / 3;
+  }
+
+  .movie-details {
+    font-size: 0.8rem;
+    @include flex-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 10rem;
+
+    div {
+      margin-left: 0.5rem;
+
+      h3 {
+        text-transform: capitalize;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .favorite {
+    border: none;
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 0.6rem 0.7rem 0.4rem;
+    max-width: 3rem;
+    @include flex-center;
+    align-self: flex-end;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .favorite svg {
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+.movie-item:hover {
+  background: linear-gradient(
+    180deg,
+    transparent 72%,
+    rgba(0, 0, 0, 0.02) 83.39%,
+    rgba(0, 0, 0, 0.04) 85.33%,
+    rgba(0, 0, 0, 0.06) 87.28%,
+    rgba(0, 0, 0, 0.08) 89.22%,
+    rgba(0, 0, 0, 0.1) 91.17%
+  );
+}
+.favorite svg:hover {
+  stroke: grey;
+}

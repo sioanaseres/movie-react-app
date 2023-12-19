@@ -1,0 +1,51 @@
+@import "variables";
+
+body {
+  box-sizing: border-box;
+  background-color: $background-color;
+  margin: 0;
+  font-size: 16px;
+  font-family: $body-font;
+  color: $font-color;
+
+  .app {
+    @include flex-center;
+    flex-direction: column;
+    background-color: $background-color;
+  }
+
+  .main {
+    width: 100%;
+    min-height: 134rem;
+    @media (min-width: $sm) {
+      width: auto;
+    }
+  }
+
+  .align-center {
+    text-align: center;
+  }
+  .inner-nav {
+    @include flex-center;
+    gap: 5%;
+    margin: 1rem;
+    position: sticky;
+
+    a {
+      color: $font-color;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: rgba($font-color, $alpha: 0.7);
+      transition: all 0.2s ease-in-out;
+    }
+    .active {
+      color: $link-color;
+      text-decoration: underline;
+    }
+    .active:hover {
+      color: rgba($link-color, $alpha: 0.8);
+    }
+  }
+}

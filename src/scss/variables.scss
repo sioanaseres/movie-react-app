@@ -1,0 +1,47 @@
+//colors
+
+$background-color: #fff;
+$search-background-color: #f4f5fb;
+$banner-background-color: #080808;
+
+$font-color: #0d0c22;
+$link-color: #9f683d;
+$heading-color: #e76f51;
+
+$success-color: #2a9d56;
+$error-color: #ff0000;
+$warning-color: #ffff00;
+
+//font
+$body-font: "Arial", sans-serif;
+
+//layout
+$container-width: 1400px;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+// breakpoints
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;

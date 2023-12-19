@@ -1,0 +1,31 @@
+@import "../../scss/variables.scss";
+
+.nav-bar {
+  @include flex-between;
+  width: 90%;
+  padding: 0.5rem 0;
+  margin-top: 1rem;
+
+  @media (min-width: $lg) {
+    margin-top: 1.5rem;
+    padding: 0;
+  }
+
+  .logo {
+    @include flex-start;
+    font-family: Segoe Script, Arial, Helvetica, sans-serif;
+
+    span {
+      font-size: 1.2em;
+      margin-right: 0.5rem;
+      margin-top: -0.3rem;
+    }
+
+    h1 {
+      font-size: 1rem;
+      @media (min-width: $lg) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

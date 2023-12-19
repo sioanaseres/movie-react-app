@@ -1,0 +1,20 @@
+@import "../../scss/variables.scss";
+
+.movie-list {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  max-width: $container-width;
+  padding: 0;
+  margin-top: 2rem;
+  gap: 2%;
+
+  @media (min-width: $md) {
+    grid-template-columns: repeat(4, 1fr);
+    place-content: center;
+  }
+  @media (min-width: $lg) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

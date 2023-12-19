@@ -1,0 +1,26 @@
+@import "../../scss/variables.scss";
+
+.movie-details-item {
+  @include flex-around;
+  flex-direction: column;
+  gap: 5%;
+  padding: 1rem;
+  max-width: $container-width;
+  min-height: 55vh;
+
+  @media (min-width: $lg) {
+    flex-direction: row;
+  }
+
+  img {
+    max-width: 100%;
+  }
+  .movie-description span {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .genres {
+    margin-top: 1rem;
+  }
+}

@@ -1,0 +1,17 @@
+@import "../../scss/variables.scss";
+
+.loader {
+  @include flex-center;
+  margin-top: 2rem;
+  width: 100vw;
+  text-align: center;
+
+  .loader-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  h1 {
+    margin-left: 1rem;
+  }
+}

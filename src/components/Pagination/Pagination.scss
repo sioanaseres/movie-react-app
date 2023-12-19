@@ -1,0 +1,19 @@
+@import "../../scss/variables.scss";
+
+.page-buttons {
+  @include flex-center;
+
+  button {
+    padding: 1rem;
+    margin: 1rem;
+    background-color: #f4f5fb;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    border-radius: 3px;
+  }
+
+  button:hover {
+    background-color: #e0e1e3;
+  }
+}
