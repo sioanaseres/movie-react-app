@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FavoritesContextProvider from "./context/FavoritesContextProvider";
 import NavBar from "./components/NavBar/NavBar";
@@ -13,7 +13,6 @@ import Footer from "./components/Footer/Footer";
 import { useMovieData } from "./hooks/useMovieData";
 
 import "./scss/main.scss";
-import SearchedMovies from "./pages/SearchedMovies/SearchedMovies";
 import MovieDetails from "./components/MovieDetails/MovieDetails";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -25,21 +24,26 @@ function App() {
   const [searchCurrentPage, setSearchCurrentPage] = useState(1);
 
   const discoverMovieUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${moviesCurrentPage}&sort_by=popularity.desc&api_key=${API_KEY}`;
+  const searchMovieUrl = `https://api.themoviedb.org/3/search/movie?include_adult=false&include_video=false&language=en-US&page=${searchCurrentPage}&sort_by=popularity.desc&query=${query}&api_key=${API_KEY}`;
 
-  const { data: movies, isLoading, error } = useMovieData(discoverMovieUrl);
+  const url = query.length >= 3 ? searchMovieUrl : discoverMovieUrl;
+  const { data: movies, isLoading, error, fetchData } = useMovieData(url);
 
   const handleMoviesPageChange = (newPage) => {
-    setMoviesCurrentPage(newPage);
+    if (!query) {
+      setMoviesCurrentPage(newPage);
+    } else if (query) {
+      setSearchCurrentPage(newPage);
+    }
   };
 
   const handleTVSeriesPageChange = (newPage) => {
     setTVSeriesCurrentPage(newPage);
   };
 
-  const handleSearchPageChange = (newPage) => {
-    setSearchCurrentPage(newPage);
-  };
-
+  useEffect(() => {
+    fetchData(url);
+  }, [searchCurrentPage, query]);
   return (
     <div className="app">
       <BrowserRouter>
@@ -48,7 +52,7 @@ function App() {
             <Search query={query} setQuery={setQuery} />
           </NavBar>
           <Banner />
-          <Main>
+          <Main setQuery={setQuery}>
             <Routes>
               <Route
                 path="/"
@@ -56,7 +60,9 @@ function App() {
                   <Home movies={movies} isLoading={isLoading} error={error}>
                     <Pagination
                       handlePageChange={handleMoviesPageChange}
-                      currentPage={moviesCurrentPage}
+                      currentPage={
+                        query ? searchCurrentPage : moviesCurrentPage
+                      }
                     />
                   </Home>
                 }
@@ -72,21 +78,7 @@ function App() {
                   </TVSeries>
                 }
               />
-              <Route
-                path="/searched"
-                element={
-                  <SearchedMovies
-                    query={query}
-                    currentPage={searchCurrentPage}
-                    setQuery={setQuery}
-                  >
-                    <Pagination
-                      handlePageChange={handleSearchPageChange}
-                      currentPage={searchCurrentPage}
-                    />
-                  </SearchedMovies>
-                }
-              />
+
               <Route path="/favorites" element={<FavoriteMovies />} />
               <Route path="/movies/:id" element={<MovieDetails />} />
             </Routes>

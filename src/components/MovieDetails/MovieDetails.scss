@@ -15,6 +15,10 @@
   img {
     max-width: 100%;
   }
+
+  .movie-description a {
+    word-break: break-all;
+  }
   .movie-description span {
     display: block;
     margin-bottom: 1rem;

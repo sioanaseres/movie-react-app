@@ -19,11 +19,12 @@ export function useMovieDetails(url) {
         const result = await fetch(url, options);
         if (!result.ok) {
           throw new Error(
-            `Something went wrong with fetching movies: ${result.status}`
+            `Something went wrong with fetching movie details: ${result.status}.`
           );
         }
         const data = await result.json();
 
+        console.log(data);
         setData(data);
       } catch (error) {
         console.error("Error fetching data:", error.message);

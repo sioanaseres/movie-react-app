@@ -2,7 +2,11 @@ import PropTypes from "prop-types";
 import "./ErrorMessage.scss";
 
 const ErrorMessage = ({ message }) => {
-  return <h2 className="error"> {message} </h2>;
+  return (
+    <div className="error">
+      <h2> {message} </h2>
+    </div>
+  );
 };
 
 ErrorMessage.propTypes = {

@@ -1,18 +1,16 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const Main = ({ children }) => {
-  const location = useLocation();
-  const isSearchRoute = location.pathname === "/searched";
+const Main = ({ children, setQuery }) => {
   return (
     <main className="main">
-      {!isSearchRoute && (
-        <nav className="inner-nav">
-          <NavLink to="/">Popular movies</NavLink>
-          <NavLink to="/series">TV Series</NavLink>
-          <NavLink to="/favorites">Favorite movies & tv series</NavLink>
-        </nav>
-      )}
+      <nav className="inner-nav">
+        <NavLink to="/" onClick={() => setQuery("")}>
+          Popular movies
+        </NavLink>
+        <NavLink to="/series">TV Series</NavLink>
+        <NavLink to="/favorites">Favorite movies & tv series</NavLink>
+      </nav>
 
       {children}
     </main>
@@ -20,6 +18,7 @@ const Main = ({ children }) => {
 };
 
 Main.propTypes = {
+  setQuery: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };
 
