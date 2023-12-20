@@ -13,7 +13,7 @@ const SeriesDetails = () => {
   const { data: movie, isLoading, error } = useMovieDetails(url);
 
   const {
-    original_title: title,
+    original_name: title,
     overview,
     homepage,
     backdrop_path: imgUrl,
