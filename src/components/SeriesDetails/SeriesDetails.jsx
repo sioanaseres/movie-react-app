@@ -3,13 +3,12 @@ import { useMovieDetails } from "../../hooks/useMovieDetails";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import defaultMovieImage from "../../assets/movie-details-default.jpg";
-import "./MovieDetails.scss";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
-const MovieDetails = () => {
+const SeriesDetails = () => {
   const { id } = useParams();
 
-  const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=${API_KEY}`;
+  const url = `https://api.themoviedb.org/3/tv/${id}?language=en-US&api_key=${API_KEY}`;
 
   const { data: movie, isLoading, error } = useMovieDetails(url);
 
@@ -26,7 +25,7 @@ const MovieDetails = () => {
   if (error) return <ErrorMessage message={error} />;
   return (
     <>
-      <Link to="/">Back to all movies</Link>
+      <Link to="/series">Back to all series</Link>
       <div className="movie-details-item">
         <img
           src={
@@ -65,4 +64,4 @@ const MovieDetails = () => {
   );
 };
 
-export default MovieDetails;
+export default SeriesDetails;

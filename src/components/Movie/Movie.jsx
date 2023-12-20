@@ -1,5 +1,5 @@
 import { useFavoriteContext } from "../../context/useFavoriteContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FiHeart } from "react-icons/fi";
 import { FaHeart } from "react-icons/fa";
 import defaultImage from "../../assets/default.jpg";
@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import "./Movie.scss";
 
 const Movie = ({ movie }) => {
+  const { pathname } = useLocation();
   const {
     original_title,
     original_name,
@@ -42,7 +43,14 @@ const Movie = ({ movie }) => {
       />
       <div className="movie-details">
         <div>
-          <Link to={`/movies/${movie.id}`} title="Movie details">
+          <Link
+            to={
+              pathname.includes("/series")
+                ? `/series/${movie.id}`
+                : `/movies/${movie.id}`
+            }
+            title="Movie details"
+          >
             <h3>
               {movieTitle.length < 20
                 ? movieTitle.toLowerCase()

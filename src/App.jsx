@@ -8,13 +8,14 @@ import Main from "./components/Main/Main";
 import Home from "./pages/Home/Home";
 import TVSeries from "./pages/TVSeries/TVSeries";
 import FavoriteMovies from "./pages/FavoriteMovies/FavoriteMovies";
+import MovieDetails from "./components/MovieDetails/MovieDetails";
+import SeriesDetails from "./components/SeriesDetails/SeriesDetails";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import Pagination from "./components/Pagination/Pagination";
 import Footer from "./components/Footer/Footer";
 import { useMovieData } from "./hooks/useMovieData";
 
 import "./scss/main.scss";
-import MovieDetails from "./components/MovieDetails/MovieDetails";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 
@@ -82,6 +83,7 @@ function App() {
 
               <Route path="/favorites" element={<FavoriteMovies />} />
               <Route path="/movies/:id" element={<MovieDetails />} />
+              <Route path="/series/:id" element={<SeriesDetails />} />
               <Route path="/*" element={<PageNotFound />} />
             </Routes>
           </Main>
