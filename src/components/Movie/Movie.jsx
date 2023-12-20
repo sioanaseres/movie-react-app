@@ -43,20 +43,29 @@ const Movie = ({ movie }) => {
       />
       <div className="movie-details">
         <div>
-          <Link
-            to={
-              pathname.includes("/series")
-                ? `/series/${movie.id}`
-                : `/movies/${movie.id}`
-            }
-            title="Movie details"
-          >
+          {pathname.indexOf("/favorites") !== -1 ? (
             <h3>
               {movieTitle.length < 20
                 ? movieTitle.toLowerCase()
                 : `${movieTitle.slice(0, 20).toLowerCase()}...`}
             </h3>
-          </Link>
+          ) : (
+            <Link
+              to={
+                pathname.includes("/series")
+                  ? `/series/${movie.id}`
+                  : `/movies/${movie.id}`
+              }
+              title="Movie details"
+            >
+              <h3>
+                {movieTitle.length < 20
+                  ? movieTitle.toLowerCase()
+                  : `${movieTitle.slice(0, 20).toLowerCase()}...`}
+              </h3>
+            </Link>
+          )}
+
           <p>
             <span>📅 </span>
             <span>{year ? year : "Year is not available"}</span>
