@@ -4,6 +4,7 @@
   @include flex-between;
   width: 90%;
   padding: 0.5rem 0;
+  margin: 0 auto;
   margin-top: 1rem;
 
   @media (min-width: $lg) {
@@ -11,6 +12,10 @@
     padding: 0;
   }
 
+  a {
+    text-decoration: none;
+    color: black;
+  }
   .logo {
     @include flex-start;
     font-family: Segoe Script, Arial, Helvetica, sans-serif;

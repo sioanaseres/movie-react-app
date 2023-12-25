@@ -79,7 +79,10 @@ const Movie = ({ movie }) => {
           }
         >
           {favoriteChecker(movie.id) ? (
-            <FaHeart onClick={() => removeFromFavorites(movie.id)} />
+            <FaHeart
+              onClick={() => removeFromFavorites(movie.id)}
+              className="favorite-active"
+            />
           ) : (
             <FiHeart onClick={() => addToFavorites(movie)} />
           )}

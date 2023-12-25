@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FavoritesContextProvider from "./context/FavoritesContextProvider";
+import Header from "./components/Header/Header";
 import NavBar from "./components/NavBar/NavBar";
 import Search from "./components/Search/Search";
 import Banner from "./components/Banner/Banner";
@@ -50,10 +51,13 @@ function App() {
     <div className="app">
       <BrowserRouter>
         <FavoritesContextProvider>
-          <NavBar>
-            <Search query={query} setQuery={setQuery} />
-          </NavBar>
-          <Banner />
+          <Header>
+            <NavBar>
+              <Search query={query} setQuery={setQuery} />
+            </NavBar>
+            <Banner />
+          </Header>
+
           <Main setQuery={setQuery}>
             <Routes>
               <Route
