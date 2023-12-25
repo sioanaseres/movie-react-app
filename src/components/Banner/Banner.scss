@@ -12,6 +12,11 @@
     font-size: clamp(1rem, 1.2rem, 1.5rem);
     width: 90%;
     margin: 1.2rem auto;
+    padding-top: 0.5rem;
+
+    @media (min-width: 411px) {
+      padding-top: 1.2rem;
+    }
 
     span {
       color: $heading-color;
